@@ -11330,3 +11330,24 @@ nav a:hover {
 [2026-07-28 06:37:28] local.INFO: AI Service initialized {"provider":"gemini","model":"gemini-2.5-flash","has_api_key":true} 
 [2026-07-29 09:35:41] local.INFO: AI Service initialized {"provider":"gemini","model":"gemini-2.5-flash","has_api_key":true} 
 [2026-07-29 09:51:33] local.INFO: AI Service initialized {"provider":"gemini","model":"gemini-2.5-flash","has_api_key":true} 
+[2026-07-29 10:47:32] local.INFO: AI Service initialized {"provider":"gemini","model":"gemini-2.5-flash","has_api_key":true} 
+[2026-07-29 10:47:32] local.INFO: AI assignment upload received {"upload_folder":"uploads/ai-evaluator/20260729104732-mhuZrRor"} 
+[2026-07-29 10:47:32] local.INFO: Reading extracted files for evaluation {"directory":"C:\\xampp\\htdocs\\AiAutoGrader - Final\\storage\\app/private\\uploads/ai-evaluator/20260729104732-mhuZrRor/extracted","file_count":7} 
+[2026-07-29 10:47:34] local.INFO: AI prompt assembled {"extracted_files":11,"submission_snippet":"===== FILE: Travelvista_IU5_EAINT_NADI_MAUNG\\Travelvista_IU5_EAINT_NADI_MAUNG\\TRAVELVISTA_CODE\\destination.html =====
+<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>Destinations</title>
+</head>
+<body>
+
+    <h1>Destinations Page</h1>
+
+</body>
+</html>
+
+===== FILE: Travelvista_IU5_EAINT_NADI_MAUNG\\Travelvista_IU5_EAINT_NADI_MAUNG\\TRAVELVISTA_CODE\\index.html =====
+<!DOCTYPE html>
+<html lang=\"en\"..."} 

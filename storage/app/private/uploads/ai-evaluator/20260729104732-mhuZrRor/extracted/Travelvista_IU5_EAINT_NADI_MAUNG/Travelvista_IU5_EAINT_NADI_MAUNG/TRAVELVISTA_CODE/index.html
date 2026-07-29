@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Travelvista Tourism</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <div class="container">
+
+    <a class="navbar-brand text-dark" href="#">
+      Travelvista Tourism
+    </a>
+
+    <!-- Hamburger -->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#myMenu">
+
+      <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="myMenu">
+
+      <ul class="navbar-nav ms-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="destination.html">Destination</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="package.html">Tour Packages</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Gallery</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- Hero Section -->
+<div class="container-fluid bg-success text-white text-center p-5">
+
+  <h1>Explore the World with Travelvista Tourism</h1>
+
+  <p>
+    Discover unforgettable destinations, exciting adventures, 
+    and personalized travel experiences designed to make every
+    journey special.
+  </p>
+
+  <button class="btn btn-warning ">
+    Start Your Journey
+  </button>
+
+</div>
+
+<!-- Categories -->
+<div class="container mt-4">
+
+  <div class="row g-4 text-center ">
+
+    <div class="col-12 col-md-4">
+      <div class="border rounded p-3 bg-light">
+        Hotel Booking
+      <p class="mt-2">
+           Find and reserve the best hotels at affordable prices
+           for a comfortable and 
+           hassle-free and relaxing stay.
+      </p>
+    </div>
+      
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="border rounded p-3 bg-light">
+        Tour Guide
+        <p class="mt-2">
+            Explore destinations with expert local guidance 
+            for a smooth and memorable travel experience.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="border rounded p-3 bg-light">
+        Transportation
+        <p class="mt-2">
+            Enjoy safe and comfortable travel with reliable
+            transport options to make your journey easy and convenient.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Travel Cards -->
+<div class="container mt-5">
+
+  <div class="row g-4">
+
+     <!-- Card 1 -->
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <div class="card h-100">
+
+        <img src="1.jpg"
+             class="card-img-top img-fluid "
+             alt="travel Image">
+
+        <div class="card-body">
+
+          <h5 class="card-title">
+            Bali, Indonesia
+          </h5>
+
+          <p class="card-text">
+            A tropical paradise known for its beautiful beaches, 
+            lush rice terraces, and rich cultural experiences. 
+            Perfect for relaxation and adventure.
+          </p>
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-success">
+            Explore More
+          </a>
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <div class="card h-100">
+
+        <img src="2.jpg"
+             class="card-img-top img-fluid"
+             alt="travel Image">
+
+        <div class="card-body">
+
+          <h5 class="card-title ">
+            Tokyo, Japan
+          </h5>
+
+          <p class="card-text">
+            A vibrant city where modern life meets tradition,
+            offering amazing food, neon streets, historic 
+            temples, and unique culture.
+
+          </p>
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-warning">
+            Explore More
+          </a>
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-12 col-md-6 col-lg-4">
+
+      <div class="card h-100">
+
+        <img src="4.jpg"
+             class="card-img-top img-fluid"
+             alt="travel Image">
+
+        <div class="card-body">
+
+          <h5 class="card-title">
+            Bangkok, Thailand
+          </h5>
+
+          <p class="card-text">
+           A lively city filled with golden temples, 
+           street food, bustling markets, and vibrant nightlife. 
+           A perfect mix of culture and excitement.
+          </p>
+
+        <div class="d-flex justify-content-center">
+          <a href="#" class="btn btn-info">
+            Explore More
+          </a>
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Booking Inquiry Form -->
+<div class="container mt-5 mb-5">
+
+  <div class="border rounded p-4">
+
+    <h3 class="text-center mb-4">
+      Plan Your Dream Vacation
+    </h3>
+
+    <form>
+
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+
+        <input type="text"
+               class="form-control"
+               id="fullname"
+               placeholder="Enter your full name">
+
+        <div id="fullnameError" class="error-message"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Email Address</label>
+
+        <input type="email"
+               class="form-control"
+               id="email"
+               placeholder="Enter your email">
+
+        <div id="emailError" class="error-message"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Destination</label>
+
+        <input type="text"
+               class="form-control"
+               id="destination"
+               placeholder="Enter your chosen destination">
+
+        <div id="destinationError" class="error-message"></div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Message</label>
+
+        <textarea class="form-control"
+                  rows="4"
+                  id="message"
+                  placeholder="Your message"></textarea>
+
+        <div id="messageError" class="error-message"></div>
+      </div>
+
+      <button type="button"
+              onclick="validateForm()"
+              class="btn btn-success w-100">
+        Book Now
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+</div>
+
+    <!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
