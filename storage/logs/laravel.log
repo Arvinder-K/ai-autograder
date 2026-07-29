@@ -11351,3 +11351,87 @@ nav a:hover {
 ===== FILE: Travelvista_IU5_EAINT_NADI_MAUNG\\Travelvista_IU5_EAINT_NADI_MAUNG\\TRAVELVISTA_CODE\\index.html =====
 <!DOCTYPE html>
 <html lang=\"en\"..."} 
+[2026-07-29 10:48:18] local.INFO: Gemini API response success {"finishReason":"STOP","usageMetadata":{"promptTokenCount":23641,"candidatesTokenCount":1315,"totalTokenCount":31008,"promptTokensDetails":[{"modality":"TEXT","tokenCount":16675},{"modality":"IMAGE","tokenCount":3870},{"modality":"DOCUMENT","tokenCount":3096}],"thoughtsTokenCount":6052,"serviceTier":"standard"}} 
+[2026-07-29 10:48:18] local.DEBUG: AI raw response {"body":"{
+  \"student_name\": \"Eaint Nadi Maung\",
+  \"assignment_name\": \"TravelVista Tourism Website\",
+  \"learner_email\": null,
+  \"module_name\": \"Front End Development\",
+  \"grading_criteria\": [
+    {
+      \"criteria\": \"Testing Scope\",
+      \"feedback\": \"The learner clearly identified the main parts of the website to be tested, including all required pages, navigation, forms, and testing types. The explanation for why testing is needed is also well-articulated in the report.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Test Plan Preparation\",
+      \"feedback\": \"The test plan is well-structured in a clear table format, covering all specified testing types and features with appropriate expected results as outlined in the assignment prompt.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Functional Testing Results\",
+      \"feedback\": \"The functional testing results are clearly documented with expected, actual, and status. Screenshots confirm the basic pages and navigation work. However, the 'destination.html' and 'package.html' files are very minimal and do not include destination or tour package cards as implied by the prompt's requirements for functional testing.\",
+      \"fixing\": \"Ensure that the 'destination.html' and 'package.html' pages are fully developed to include destination and tour package cards, and then re-test and update the report to reflect these elements.\",
+      \"score\": \"15 / 20\"
+    },
+    {
+      \"criteria\": \"Booking Inquiry Form Validation Testing\",
+      \"feedback\": \"The learner successfully implemented blank field and basic email validation for the booking form, with clear error messages and successful submission handling, as evidenced by the code and screenshots. However, the submission lacks implementation and testing for password and confirm password matching, contact number validation, and booking reference ID validation, which were explicitly required.\",
+      \"fixing\": \"Add input fields for password, confirm password, contact number, and booking reference ID to the 'index.html' form. Implement JavaScript validation logic in 'script.js' for these new fields, including password matching and specific format validation. Update the testing report with results and screenshots for these additional validation tests.\",
+      \"score\": \"7 / 15\"
+    },
+    {
+      \"criteria\": \"Cross-Browser Compatibility Testing\",
+      \"feedback\": \"The cross-browser compatibility testing results are clearly documented for Google Chrome, Microsoft Edge, and Mozilla Firefox, indicating successful functionality across these browsers.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Responsive Layout Testing\",
+      \"feedback\": \"The responsive layout testing is well-documented with results for mobile, tablet, and desktop views. The provided screenshots clearly demonstrate the website's adaptability across different screen sizes, including the hamburger menu functionality.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Lighthouse Testing\",
+      \"feedback\": \"The Lighthouse testing results are comprehensively presented, including scores for all categories and a relevant recommendation. The supporting screenshot clearly validates the reported scores.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Testing Evidence & Screenshots\",
+      \"feedback\": \"All required screenshots are present and clearly support the documented testing results across functional, validation, responsive, and Lighthouse testing.\",
+      \"fixing\": \"No fixing required.\",
+      \"score\": \"10 / 10\"
+    },
+    {
+      \"criteria\": \"Final Testing Documentation Report\",
+      \"feedback\": \"The report is well-organized with clear headings, tables, and a comprehensive final summary. However, significant portions of the 'Project Background' and 'Project Objective' sections, along with some task descriptions, appear to be copied verbatim from the assignment prompt, which detracts from the originality and professionalism of the documentation.\",
+      \"fixing\": \"Rephrase the 'Project Background' and 'Project Objective' sections in your own words to demonstrate understanding and originality. Ensure all descriptive text in the report is your own writing, even if it summarizes assignment requirements.\",
+      \"score\": \"3 / 5\"
+    }
+  ],
+  \"summary\": {
+    \"max_score\": \"100\",
+    \"earned_score\": \"85\",
+    \"percentage\": \"85\",
+    \"grade\": \"Not specified/Not Found\",
+    \"ksa_index\": \"Above or equal to 80\"
+  },
+  \"strengths\": [
+    \"The testing scope and test plan are thoroughly prepared and clearly documented.\",
+    \"Comprehensive functional, responsive, and Lighthouse testing results are provided with supporting screenshots.\",
+    \"The booking inquiry form correctly handles blank fields and basic email validation.\",
+    \"The final report is well-organized with clear headings and tables.\"
+  ],
+  \"weaknesses\": [
+    \"The 'destination.html' and 'package.html' pages are incomplete, lacking required content like destination/package cards.\",
+    \"The booking inquiry form validation is incomplete, missing implementation and testing for password matching, contact number, and booking reference ID.\",
+    \"The testing documentation report contains verbatim copied text from the assignment prompt, reducing its originality.\"
+  ],
+  \"action_plan\": \"Good work—your testing documentation demonstrates a solid understanding of website testing principles. To further improve, focus on completing the implementation of the 'destination.html' and 'package.html' pages to include all required cards. Additionally, enhance the booking inquiry form by adding and testing validation for password matching, contact number, and booking reference ID. Finally, ensure all descriptive sections in your report are written in your own words to enhance originality and professionalism.\"
+}"} 
+[2026-07-29 10:48:18] local.INFO: AI assignment evaluation saved {"evaluation_id":38,"is_json_response":true} 
+[2026-07-29 10:48:20] local.INFO: AI Service initialized {"provider":"gemini","model":"gemini-2.5-flash","has_api_key":true} 
