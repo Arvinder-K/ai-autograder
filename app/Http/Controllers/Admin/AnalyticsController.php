@@ -3,61 +3,90 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\AuditLog;
-use App\Models\FeatureList;
-use App\Models\Story;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use App\Models\AIAssignmentEvaluation;
+use Illuminate\Http\Request;
 
 class AnalyticsController extends Controller
 {
     public function index()
     {
-        $totalUsers = User::count();
-        $activeUsers = User::where('is_active', true)->count();
-        $totalStories = Story::count();
-        $approvedStories = Story::where('status', 'approved')->count();
-        $totalFeatureLists = FeatureList::count();
+        $evaluations = AIAssignmentEvaluation::with('savedPrompt')->get();
+        $chartData = [];
 
-        // Stories by status
-        $storiesByStatus = Story::select('status', DB::raw('count(*) as count'))
-            ->groupBy('status')
-            ->pluck('count', 'status')
-            ->toArray();
+        foreach ($evaluations as $evaluation) {
+            $studentName = $evaluation->student_name ?? 'Unknown Learner';
+            $promptTitle = $evaluation->savedPrompt ? $evaluation->savedPrompt->title : ($evaluation->assignment_name ?? 'Unknown Assignment');
+            $moduleName = $evaluation->savedPrompt ? ($evaluation->savedPrompt->module_name ?: 'Uncategorized') : 'Uncategorized';
+            
+            $score = 0;
+            $report = json_decode($evaluation->evaluation_report, true);
+            
+            if (is_array($report)) {
+                if (isset($report['assignment_title'])) {
+                    $assignmentName = $report['assignment_title'];
+                }
+                
+                if (isset($report['summary']['earned_score'])) {
+                    $score = (float) $report['summary']['earned_score'];
+                } elseif (isset($report['overall_score'])) {
+                    $score = (float) $report['overall_score'];
+                } else {
+                    // Try to calculate score manually from criteria feedback if missing
+                    if (!empty($report['criteria_feedback'])) {
+                        foreach ($report['criteria_feedback'] as $criteria) {
+                            $scoreStr = $criteria['score'] ?? '';
+                            if (preg_match('/(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)/', $scoreStr, $matches)) {
+                                $score += (float) $matches[1];
+                            }
+                        }
+                    }
+                }
+            }
 
-        // Stories by domain (from JSON field)
-        $storiesByDomain = Story::whereNotNull('selected_domains')
-            ->get()
-            ->flatMap(fn($s) => $s->selected_domains ?? [])
-            ->countBy()
-            ->sortDesc()
-            ->take(10)
-            ->toArray();
+            // Only show data if there is a matched saved_prompt record
+            if ($score > 0 && strtolower($studentName) !== 'unknown learner' && $evaluation->savedPrompt) {
+                $shortPrompt = strlen($promptTitle) > 25 ? substr($promptTitle, 0, 22) . '...' : $promptTitle;
+                $label = $shortPrompt . ' (' . $studentName . ')';
+                
+                $chartData[] = [
+                    'label' => $label,
+                    'score' => $score,
+                    'full_prompt' => $promptTitle,
+                    'module_name' => $moduleName,
+                    'student_name' => $studentName
+                ];
+            }
+        }
 
-        // Recent activity (last 30 days)
-        $recentActivity = AuditLog::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
-            ->where('created_at', '>=', now()->subDays(30))
-            ->groupBy(DB::raw('DATE(created_at)'))
-            ->orderBy('date')
-            ->pluck('count', 'date')
-            ->toArray();
+        // Sort alphabetically by label so assignments appear in order
+        usort($chartData, function($a, $b) {
+            return strcmp($a['label'], $b['label']);
+        });
 
-        // Top users by stories
-        $topUsers = User::withCount('stories')
-            ->orderByDesc('stories_count')
-            ->take(10)
-            ->get();
+        // Summary Statistics
+        $totalEvaluations = count($chartData);
+        $totalScore = array_sum(array_column($chartData, 'score'));
+        $averageScore = $totalEvaluations > 0 ? round($totalScore / $totalEvaluations, 1) : 0;
 
-        return view('admin.analytics.index', compact(
-            'totalUsers',
-            'activeUsers',
-            'totalStories',
-            'approvedStories',
-            'totalFeatureLists',
-            'storiesByStatus',
-            'storiesByDomain',
-            'recentActivity',
-            'topUsers'
-        ));
+        // Module Performance
+        $moduleStats = [];
+        foreach ($chartData as $data) {
+            $mod = $data['module_name'];
+            if (!isset($moduleStats[$mod])) {
+                $moduleStats[$mod] = ['total' => 0, 'count' => 0];
+            }
+            $moduleStats[$mod]['total'] += $data['score'];
+            $moduleStats[$mod]['count']++;
+        }
+        
+        $moduleAverages = [];
+        foreach ($moduleStats as $mod => $stats) {
+            $moduleAverages[] = [
+                'module' => $mod,
+                'average' => round($stats['total'] / $stats['count'], 1)
+            ];
+        }
+
+        return view('admin.analytics.index', compact('chartData', 'totalEvaluations', 'averageScore', 'moduleAverages'));
     }
 }

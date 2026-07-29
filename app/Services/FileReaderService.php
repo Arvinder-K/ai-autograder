@@ -79,7 +79,7 @@ class FileReaderService
 
             // Even if content is "failed", we still want to show the file exists
             if ($content === '' || $content === 'PDF content could not be parsed automatically.' || $content === 'DOC content could not be parsed automatically.') {
-                $output[] = sprintf("===== FILE: %s =====\n[STATUS: File exists but content extraction failed. Please check if this file is mentioned in other documents or if you can infer its content from its filename.]\n%s", $relativePath, $content);
+                $output[] = sprintf("===== FILE: %s =====\n[STATUS: File exists but content extraction failed.\nTreat the file as unverified evidence.\nDo not infer functionality from filename or file location.\nAward marks only for requirements that can be verified.]\n%s", $relativePath, $content);
                 continue;
             }
 

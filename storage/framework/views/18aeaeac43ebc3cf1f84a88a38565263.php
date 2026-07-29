@@ -1,13 +1,22 @@
-<x-layouts.app :title="'AI Assignment Evaluator'" :apiStatus="$apiStatus ?? null">
+<?php if (isset($component)) { $__componentOriginal5863877a5171c196453bfa0bd807e410 = $component; } ?>
+<?php if (isset($attributes)) { $__attributesOriginal5863877a5171c196453bfa0bd807e410 = $attributes; } ?>
+<?php $component = Illuminate\View\AnonymousComponent::resolve(['view' => 'components.layouts.app','data' => ['title' => 'AI Assignment Evaluator','apiStatus' => $apiStatus ?? null]] + (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag ? $attributes->all() : [])); ?>
+<?php $component->withName('layouts.app'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php if (isset($attributes) && $attributes instanceof Illuminate\View\ComponentAttributeBag): ?>
+<?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
+<?php endif; ?>
+<?php $component->withAttributes(['title' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute('AI Assignment Evaluator'),'apiStatus' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute($apiStatus ?? null)]); ?>
     <div class="page-body max-w-5xl mx-auto flex flex-col gap-8">
         <div class="bg-white/95 backdrop-blur-xl border border-white/20 shadow-[0_8px_30px_rgb(0,0,0,0.04)] w-full p-8 rounded-[32px]">
-            @if (!isset($latestEvaluation))
+            <?php if(!isset($latestEvaluation)): ?>
                 <div class="mb-8">
                     <h2 class="text-[22px] font-bold text-[#111827] mb-2">Submission Setup</h2>
                     <p class="text-[15px] text-[#4B5563]">Select your module assignment and upload your project submission.</p>
                 </div>
                 
-                <form method="POST" action="{{ route('ai.evaluator.process') }}" enctype="multipart/form-data" 
+                <form method="POST" action="<?php echo e(route('ai.evaluator.process')); ?>" enctype="multipart/form-data" 
                   x-data="{ 
                       loading: false, 
                       progress: 0, 
@@ -33,20 +42,20 @@
                       }
                   }" 
                   @submit.prevent="startProgress(); $event.target.submit();">
-                @csrf
+                <?php echo csrf_field(); ?>
 
                 <div class="flex flex-wrap gap-4 mb-6">
                     <!-- The Learner Name and Assignment No are now automatically extracted by AI -->
                     
-                    @if ($errors->any())
+                    <?php if($errors->any()): ?>
                         <div class="w-full bg-red-50 text-red-500 text-sm p-4 rounded-xl border border-red-100 mb-2">
                             <ul class="list-disc pl-5">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
+                                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <li><?php echo e($error); ?></li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </ul>
                         </div>
-                    @endif
+                    <?php endif; ?>
                     <!-- Prompt File Box -->
                     <div class="bg-[#FDFDFD] border border-[#E5E7EB] rounded-2xl p-4 shadow-sm hover:border-brand-primary/40 transition-colors flex-1 min-w-[200px] flex flex-col" x-data="{ prompts: [] }" @prompts-updated.window="prompts = $event.detail" x-init="fetch('/prompts').then(r => r.json()).then(d => { prompts = d; })">
                         <div>
@@ -104,25 +113,35 @@
                     </div>
                 </div>
             </form>
-            @endif
+            <?php endif; ?>
 
-            @if (isset($latestEvaluation))
+            <?php if(isset($latestEvaluation)): ?>
                 <div class="mt-8 border-t border-gray-100 pt-8" id="latest-evaluation-result">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-[20px] font-bold text-[#111827]">Latest Evaluation Result</h2>
                         <div class="flex gap-2">
-                            <a href="{{ route('ai.evaluator') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-lg text-sm transition-colors flex items-center gap-2">
+                            <a href="<?php echo e(route('ai.evaluator')); ?>" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-1.5 px-4 rounded-lg text-sm transition-colors flex items-center gap-2">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                                 Go back to AI AutoGrader
                             </a>
-                            <a href="{{ route('ai.evaluator.download.pdf', $latestEvaluation) }}" class="btn-secondary text-sm py-1 px-3" download>Download (.txt)</a>
-                            <a href="{{ route('ai.evaluator.download.docx', $latestEvaluation) }}" class="btn-secondary text-sm py-1 px-3" download>Download (.docx)</a>
+                            <a href="<?php echo e(route('ai.evaluator.download.pdf', $latestEvaluation)); ?>" class="btn-secondary text-sm py-1 px-3" download>Download (.txt)</a>
+                            <a href="<?php echo e(route('ai.evaluator.download.docx', $latestEvaluation)); ?>" class="btn-secondary text-sm py-1 px-3" download>Download (.docx)</a>
                         </div>
                     </div>
-                    @include('ai-evaluator._report', ['evaluation' => $latestEvaluation, 'evaluationData' => $evaluationData, 'isJson' => $isJson])
+                    <?php echo $__env->make('ai-evaluator._report', ['evaluation' => $latestEvaluation, 'evaluationData' => $evaluationData, 'isJson' => $isJson], array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
                 </div>
-            @endif
+            <?php endif; ?>
 
 
     </div>
-</x-layouts.app>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__attributesOriginal5863877a5171c196453bfa0bd807e410)): ?>
+<?php $attributes = $__attributesOriginal5863877a5171c196453bfa0bd807e410; ?>
+<?php unset($__attributesOriginal5863877a5171c196453bfa0bd807e410); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal5863877a5171c196453bfa0bd807e410)): ?>
+<?php $component = $__componentOriginal5863877a5171c196453bfa0bd807e410; ?>
+<?php unset($__componentOriginal5863877a5171c196453bfa0bd807e410); ?>
+<?php endif; ?>
+<?php /**PATH C:\xampp\htdocs\AiAutoGrader - Final\resources\views/ai-evaluator/index.blade.php ENDPATH**/ ?>

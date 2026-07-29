@@ -14,47 +14,47 @@ export default {
         extend: {
             colors: {
                 brand: {
-                    primary: '#193E6B',
-                    'primary-hover': '#122d4f',
-                    'primary-active': '#0d2038',
-                    accent: '#B3A125',
-                    'accent-hover': '#8f8120',
-                    violet: '#7F3F98',
-                    blue: '#448E9D',
-                    gold: '#E9AC53',
-                    neutral: '#EEE7E0',
+                    primary: '#6366F1', // Indigo
+                    'primary-hover': '#4F46E5',
+                    'primary-active': '#4338CA',
+                    accent: '#10B981', // Emerald
+                    'accent-hover': '#059669',
+                    violet: '#8B5CF6',
+                    blue: '#3B82F6',
+                    gold: '#F59E0B',
+                    neutral: '#1E293B',
                 },
                 surface: {
-                    page: '#EEE7E0',
-                    panel: '#FFFFFF',
-                    'panel-muted': '#F5F2EE',
-                    inverse: '#193E6B',
+                    page: '#F8FAFC', // Slate 50
+                    panel: '#FFFFFF', // White
+                    'panel-muted': '#F1F5F9', // Slate 100
+                    inverse: '#0F172A', // Slate 900
                 },
                 txt: {
-                    primary: '#111111',
-                    secondary: '#3D3D3D',
-                    muted: '#6B6860',
+                    primary: '#0F172A', // Slate 900
+                    secondary: '#475569', // Slate 600
+                    muted: '#94A3B8', // Slate 400
                     inverse: '#FFFFFF',
                 },
                 border: {
-                    DEFAULT: '#D4CEC7',
-                    strong: '#B0A99F',
-                    subtle: '#E8E4DF',
+                    DEFAULT: '#E2E8F0', // Slate 200
+                    strong: '#CBD5E1', // Slate 300
+                    subtle: '#F1F5F9', // Slate 100
                 },
                 status: {
-                    'success-bg': '#E6F4EA',
-                    'success-text': '#1E5C30',
-                    'warning-bg': '#FDF3DC',
-                    'warning-text': '#7A4F0A',
-                    'danger-bg': '#FDECEA',
-                    'danger-text': '#8B1C1C',
-                    'info-bg': '#E0EFF2',
-                    'info-text': '#1E5F6B',
+                    'success-bg': 'rgba(16, 185, 129, 0.1)',
+                    'success-text': '#34D399',
+                    'warning-bg': 'rgba(245, 158, 11, 0.1)',
+                    'warning-text': '#FBBF24',
+                    'danger-bg': 'rgba(239, 68, 68, 0.1)',
+                    'danger-text': '#F87171',
+                    'info-bg': 'rgba(59, 130, 246, 0.1)',
+                    'info-text': '#60A5FA',
                 },
             },
             fontFamily: {
-                heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
-                base: ['Source Sans 3', ...defaultTheme.fontFamily.sans],
+                heading: ['Outfit', 'Inter', ...defaultTheme.fontFamily.sans],
+                base: ['Inter', ...defaultTheme.fontFamily.sans],
                 special: ['Vollkorn', ...defaultTheme.fontFamily.serif],
                 multilingual: ['Noto Sans', ...defaultTheme.fontFamily.sans],
             },
@@ -73,7 +73,7 @@ export default {
             spacing: {
                 'layout-sidebar': '16rem',
                 'layout-sidebar-collapsed': '4.5rem',
-                'layout-topbar': '4rem',
+                'layout-topbar': '4.5rem',
             },
             maxWidth: {
                 'layout': '90rem',
@@ -85,16 +85,18 @@ export default {
                 lg: '0.75rem',
                 xl: '1rem',
                 pill: '9999px',
+                '2xl': '1.5rem',
             },
             boxShadow: {
-                sm: '0 1px 2px rgba(25, 62, 107, 0.06)',
-                md: '0 4px 12px rgba(25, 62, 107, 0.10)',
-                lg: '0 12px 28px rgba(25, 62, 107, 0.16)',
+                sm: '0 1px 2px rgba(0, 0, 0, 0.2)',
+                md: '0 4px 12px rgba(0, 0, 0, 0.3)',
+                lg: '0 12px 28px rgba(0, 0, 0, 0.4)',
+                glow: '0 0 15px rgba(99, 102, 241, 0.5)',
             },
             transitionDuration: {
-                fast: '120ms',
-                base: '180ms',
-                slow: '260ms',
+                fast: '150ms',
+                base: '250ms',
+                slow: '350ms',
             },
         },
     },

@@ -7,7 +7,7 @@
 
                 <div class="w-20 h-20 bg-brand-accent rounded-xl flex items-center justify-center mx-auto mb-8">
                     <span class="font-heading font-black text-display text-txt-inverse">
-                        AI
+                        SF
                     </span>
                 </div>
 

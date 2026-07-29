@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \App\Http\Middleware\RoleMiddleware::class,
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'story.owner' => \App\Http\Middleware\StoryOwnerMiddleware::class,
+            'auto-login' => \App\Http\Middleware\AutoLoginMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

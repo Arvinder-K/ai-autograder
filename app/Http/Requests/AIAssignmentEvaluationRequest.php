@@ -14,10 +14,8 @@ class AIAssignmentEvaluationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'student_name' => 'required|string|max:255',
-            'assignment_name' => 'required|string|max:255',
-            'prompt_file' => 'required|file|mimes:txt,pdf,docx,doc|max:51200',
-            'zip_file' => 'required|file|mimes:zip|max:51200',
+            'saved_prompt_id' => 'required|exists:saved_prompts,id',
+            'zip_file' => 'required|file|mimes:zip|max:102400',
         ];
     }
 

@@ -30,7 +30,7 @@ class SocialAuthController extends Controller
         try {
             $socialUser = Socialite::driver($driver)->user();
         } catch (\Exception $e) {
-            return redirect()->route('login')
+            return redirect()->intended(url('/'))
                 ->with('error', 'Authentication failed. Please try again.');
         }
 
@@ -77,7 +77,7 @@ class SocialAuthController extends Controller
 
         // Block inactive users
         if (!$user->is_active) {
-            return redirect()->route('login')
+            return redirect()->intended(url('/'))
                 ->with('error', 'Your account has been deactivated. Contact an administrator.');
         }
 
@@ -94,7 +94,7 @@ class SocialAuthController extends Controller
 
         AuditService::log('login', 'user', $user->id, "User logged in via {$provider}", request: $request);
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()->intended(url('/'));
     }
 
     public function logout(Request $request)
@@ -105,6 +105,6 @@ class SocialAuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->intended(url('/'));
     }
 }
